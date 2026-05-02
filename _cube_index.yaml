@@ -1,0 +1,387 @@
+# Agent Knowledge Cube — 三维索引矩阵
+# _cube_index.yaml
+#
+# 每个条目定义了：
+#   x: 角色 (Role)        — 谁做
+#   y: 工作流阶段 (Stage) — 怎么做
+#   z: 知识切片 (Slice)   — 用什么做
+#
+# Agent 启动时只加载与其 (x, y) 坐标匹配的知识切片
+# 确保信息边界精准、角色不冲突
+
+version: 1.0
+
+cube:
+  # ═══════════════════════════════════════════
+  # 软件开发工作流
+  # ═══════════════════════════════════════════
+
+  # 需求分析阶段
+  - x: product-manager
+    y: software-development:requirements-analysis
+    z:
+      - product/user-research-guide.md
+      - product/prd-template.md
+      - product/competitor-analysis.md
+
+  - x: data-analyst
+    y: software-development:requirements-analysis
+    z:
+      - product/user-research-guide.md
+      - product/metrics-definitions.md
+
+  # 设计阶段
+  - x: product-designer
+    y: software-development:design
+    z:
+      - product/prd-template.md
+      - design/design-system.md
+
+  - x: ui-designer
+    y: software-development:design
+    z:
+      - design/design-system.md
+      - design/visual-guide.md
+
+  - x: software-engineer
+    y: software-development:design
+    z:
+      - engineering/architecture-guide.md
+      - engineering/tech-stack.md
+
+  # 编码实现阶段
+  - x: software-engineer
+    y: software-development:implementation
+    z:
+      - engineering/code-standards.md
+      - engineering/tech-stack.md
+      - engineering/architecture-guide.md
+      - product/prd-template.md  # 需求相关部分
+
+  # 代码审查阶段
+  - x: software-engineer
+    y: software-development:code-review
+    z:
+      - engineering/code-standards.md
+      - engineering/review-checklist.md
+
+  - x: qa-engineer
+    y: software-development:code-review
+    z:
+      - engineering/code-standards.md
+      - engineering/review-checklist.md
+      - engineering/test-strategy.md
+
+  - x: security-engineer
+    y: software-development:code-review
+    z:
+      - engineering/security-guidelines.md
+      - engineering/code-standards.md
+
+  # 测试阶段
+  - x: qa-engineer
+    y: software-development:testing
+    z:
+      - engineering/test-strategy.md
+      - engineering/test-cases.md
+      - product/prd-template.md  # 验收条件
+
+  - x: software-engineer
+    y: software-development:testing
+    z:
+      - engineering/test-strategy.md
+
+  # 部署阶段
+  - x: devops-engineer
+    y: software-development:deployment
+    z:
+      - engineering/deployment-guide.md
+      - engineering/monitoring-setup.md
+      - engineering/rollback-plan.md
+
+  - x: software-engineer
+    y: software-development:deployment
+    z:
+      - engineering/deployment-guide.md
+      - engineering/release-notes.md
+
+  - x: qa-engineer
+    y: software-development:deployment
+    z:
+      - engineering/deployment-guide.md
+      - engineering/smoke-test-checklist.md
+
+  # ═══════════════════════════════════════════
+  # 客户服务工作流
+  # ═══════════════════════════════════════════
+
+  # 问题受理
+  - x: customer-support-agent
+    y: customer-service:receive
+    z:
+      - customer-support/faq.md
+      - customer-support/triage-rules.md
+      - product/user-guide.md
+
+  # 问题诊断
+  - x: customer-support-agent
+    y: customer-service:diagnose
+    z:
+      - customer-support/knowledge-base.md
+      - customer-support/known-issues.md
+      - product/user-guide.md
+
+  - x: technical-support-engineer
+    y: customer-service:diagnose
+    z:
+      - engineering/debugging-guide.md
+      - customer-support/known-issues.md
+      - engineering/architecture-guide.md
+
+  # 问题解决
+  - x: customer-support-agent
+    y: customer-service:resolve
+    z:
+      - customer-support/solution-templates.md
+      - customer-support/workaround-docs.md
+
+  - x: technical-support-engineer
+    y: customer-service:resolve
+    z:
+      - engineering/patch-guide.md
+      - engineering/hotfix-procedure.md
+
+  - x: software-engineer
+    y: customer-service:resolve
+    z:
+      - engineering/patch-guide.md
+      - engineering/code-standards.md
+
+  # 售后跟进
+  - x: customer-support-agent
+    y: customer-service:follow-up
+    z:
+      - customer-support/follow-up-templates.md
+      - product/update-logs.md
+
+  # ═══════════════════════════════════════════
+  # 营销活动工作流
+  # ═══════════════════════════════════════════
+
+  - x: marketing-specialist
+    y: marketing-campaign:strategy
+    z:
+      - marketing/campaign-strategy.md
+      - marketing/audience-insights.md
+      - product/competitor-analysis.md
+      - product/brand-guide.md
+
+  - x: data-analyst
+    y: marketing-campaign:strategy
+    z:
+      - marketing/audience-insights.md
+      - product/metrics-definitions.md
+
+  - x: content-creator
+    y: marketing-campaign:creative
+    z:
+      - marketing/content-calendar.md
+      - marketing/brand-guide.md
+      - marketing/seo-keywords.md
+      - design/visual-library.md
+
+  - x: ui-designer
+    y: marketing-campaign:creative
+    z:
+      - marketing/brand-guide.md
+      - design/visual-library.md
+      - design/design-system.md
+
+  - x: marketing-specialist
+    y: marketing-campaign:launch
+    z:
+      - marketing/channel-config.md
+      - marketing/launch-checklist.md
+      - marketing/ad-platform-guide.md
+
+  - x: marketing-specialist
+    y: marketing-campaign:analyze
+    z:
+      - marketing/analytics-dashboard.md
+      - marketing/report-templates.md
+      - product/metrics-definitions.md
+
+  - x: data-analyst
+    y: marketing-campaign:analyze
+    z:
+      - marketing/analytics-dashboard.md
+      - marketing/report-templates.md
+
+  # ═══════════════════════════════════════════
+  # 销售管道工作流
+  # ═══════════════════════════════════════════
+
+  - x: sales-representative
+    y: sales-pipeline:lead-generation
+    z:
+      - sales/lead-sources.md
+      - sales/icp-definition.md
+      - marketing/campaign-data.md
+
+  - x: sales-representative
+    y: sales-pipeline:qualify
+    z:
+      - sales/qualification-criteria.md
+      - sales/bant-framework.md
+      - product/pricing.md
+
+  - x: sales-representative
+    y: sales-pipeline:present
+    z:
+      - sales/product-demo-script.md
+      - sales/competitor-comparison.md
+      - product/case-studies.md
+
+  - x: software-engineer
+    y: sales-pipeline:present
+    z:
+      - engineering/architecture-overview.md  # 仅售前可公开部分
+
+  - x: sales-representative
+    y: sales-pipeline:close
+    z:
+      - sales/contract-templates.md
+      - sales/pricing-guide.md
+
+  - x: legal-counsel
+    y: sales-pipeline:close
+    z:
+      - legal/contract-clauses.md
+      - legal/compliance-checklist.md
+
+  - x: finance-specialist
+    y: sales-pipeline:close
+    z:
+      - finance/invoicing.md
+      - finance/payment-terms.md
+
+  - x: sales-representative
+    y: sales-pipeline:onboard
+    z:
+      - sales/handover-template.md
+
+  - x: customer-support-agent
+    y: sales-pipeline:onboard
+    z:
+      - customer-support/onboarding-guide.md
+      - product/setup-guide.md
+
+  - x: software-engineer
+    y: sales-pipeline:onboard
+    z:
+      - product/setup-guide.md
+      - customer-support/onboarding-guide.md
+
+  # ═══════════════════════════════════════════
+  # 产品开发工作流
+  # ═══════════════════════════════════════════
+
+  - x: product-manager
+    y: product-development:discover
+    z:
+      - product/user-research-guide.md
+      - product/competitor-analysis.md
+      - product/metrics-definitions.md
+      - customer-support/known-issues.md
+
+  - x: ux-researcher
+    y: product-development:discover
+    z:
+      - product/user-research-guide.md
+      - product/competitor-analysis.md
+
+  - x: data-analyst
+    y: product-development:discover
+    z:
+      - product/metrics-definitions.md
+      - product/user-research-guide.md
+      - customer-support/ticket-analysis.md
+
+  - x: product-manager
+    y: product-development:define
+    z:
+      - product/prd-template.md
+      - product/roadmap.md
+
+  - x: product-designer
+    y: product-development:define
+    z:
+      - product/prd-template.md
+      - design/design-system.md
+
+  - x: software-engineer
+    y: product-development:define
+    z:
+      - engineering/feasibility.md
+      - engineering/architecture-guide.md
+
+  - x: software-engineer
+    y: product-development:build
+    z:
+      - engineering/code-standards.md
+      - engineering/tech-stack.md
+      - product/prd-template.md
+      - design/design-specs.md
+
+  - x: qa-engineer
+    y: product-development:build
+    z:
+      - engineering/test-strategy.md
+      - product/prd-template.md
+
+  - x: product-manager
+    y: product-development:build
+    z:
+      - product/prd-template.md
+      - product/acceptance-criteria.md
+
+  - x: devops-engineer
+    y: product-development:launch
+    z:
+      - engineering/deployment-guide.md
+      - engineering/monitoring-setup.md
+
+  - x: product-manager
+    y: product-development:launch
+    z:
+      - product/release-notes.md
+
+  - x: marketing-specialist
+    y: product-development:launch
+    z:
+      - marketing/announcement-plan.md
+
+  - x: customer-support-agent
+    y: product-development:launch
+    z:
+      - customer-support/faq-update.md
+      - product/release-notes.md
+
+  - x: product-manager
+    y: product-development:iterate
+    z:
+      - product/metrics-dashboard.md
+      - product/user-feedback.md
+
+  - x: data-analyst
+    y: product-development:iterate
+    z:
+      - product/metrics-dashboard.md
+      - product/user-feedback.md
+      - customer-support/ticket-analysis.md
+
+  - x: software-engineer
+    y: product-development:iterate
+    z:
+      - engineering/performance-data.md
+      - customer-support/ticket-analysis.md

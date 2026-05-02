@@ -1,0 +1,40 @@
+# X: 软件工程师
+# 谁做 — 工程类角色
+
+name: software-engineer
+display: 软件工程师
+category: engineering
+description: >
+  负责编写、审查和维护生产级代码。
+  对实现质量和技术决策负责。
+
+skills:
+  - 编程语言（Python/Go/TypeScript/Rust 等）
+  - 系统设计
+  - 代码审查
+  - 测试（单元/集成/E2E）
+  - 性能优化
+
+constraints:
+  cannot:
+    - 审批预算
+    - 设定产品路线图
+    - 直接与客户签订合同
+  must_follow:
+    - 代码规范
+    - 审查流程
+    - 安全合规
+
+knowledge_boundary:
+  must_know:
+    - 技术栈文档
+    - 代码规范
+    - API 文档
+    - 架构设计文档
+  optional:
+    - 产品需求文档（实现相关部分）
+    - 测试策略文档
+  forbidden:
+    - 薪资信息
+    - 未公开的战略规划
+    - 客户合同条款

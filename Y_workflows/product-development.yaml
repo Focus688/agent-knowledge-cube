@@ -1,0 +1,107 @@
+# Y: 产品开发工作流
+# 怎么做 — 从发现到迭代的产品全流程
+
+name: product-development
+display: 产品开发
+description: 从用户发现到持续迭代的产品全生命周期
+
+stages:
+  - id: discover
+    name: 需求发现
+    roles:
+      - product-manager
+      - ux-researcher
+      - data-analyst
+    knowledge_slice:
+      - product/user-research
+      - product/competitor-analysis
+      - product/metrics-definitions
+      - customer-support/known-issues
+    handoff: >
+      输出发现报告
+      进入需求定义阶段
+    verification:
+      - 用户痛点已验证
+      - 市场机会已量化
+      - 优先级排序已完成
+
+  - id: define
+    name: 需求定义
+    roles:
+      - product-manager
+      - product-designer
+      - software-engineer
+    knowledge_slice:
+      - product/product-requirement-docs
+      - product/roadmap
+      - engineering/feasibility
+      - design/design-system
+    handoff: >
+      输出 PRD
+      经评审后进入开发
+    verification:
+      - PRD 已评审
+      - 验收标准已定义
+      - 技术可行性已确认
+      - 设计稿已交付
+
+  - id: build
+    name: 开发构建
+    roles:
+      - software-engineer
+      - qa-engineer
+      - product-manager
+    knowledge_slice:
+      - engineering/code-standards
+      - engineering/test-strategy
+      - product/product-requirement-docs
+      - design/design-specs
+    handoff: >
+      功能开发完成
+      进入发布准备阶段
+    verification:
+      - 开发完成
+      - 测试通过
+      - 产品验收通过
+      - 发布说明已准备
+
+  - id: launch
+    name: 发布上线
+    roles:
+      - devops-engineer
+      - product-manager
+      - marketing-specialist
+      - customer-support-agent
+    knowledge_slice:
+      - engineering/deployment-guide
+      - product/release-notes
+      - marketing/announcement-plan
+      - customer-support/faq-update
+    handoff: >
+      功能已上线
+      进入数据验证与迭代阶段
+    verification:
+      - 部署确认
+      - 监控正常
+      - 公告已发出
+      - 客服已培训
+
+  - id: iterate
+    name: 数据迭代
+    roles:
+      - product-manager
+      - data-analyst
+      - software-engineer
+    knowledge_slice:
+      - product/metrics-dashboard
+      - product/user-feedback
+      - customer-support/ticket-analysis
+      - engineering/performance-data
+    handoff: >
+      分析结果输入下一轮发现阶段
+      形成正向循环
+    verification:
+      - 上线数据已收集
+      - KPI 达标评估完成
+      - 用户反馈已分析
+      - 优化方向已确定

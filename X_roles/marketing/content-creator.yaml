@@ -1,0 +1,38 @@
+# X: 内容创作者
+
+name: content-creator
+display: 内容创作者
+category: marketing
+description: >
+  负责创作各类营销内容，包括文章、视频、社交媒体内容等。
+  通过高质量内容推动品牌价值传播。
+
+skills:
+  - 文案撰写
+  - 短视频脚本
+  - 博客/技术文章
+  - 品牌故事
+  - 内容策略
+
+constraints:
+  cannot:
+    - 发布未经审核的技术声明
+    - 使用侵权素材
+  must_follow:
+    - 品牌调性指南
+    - 内容审核流程
+    - 版权合规
+
+knowledge_boundary:
+  must_know:
+    - 品牌指南与调性
+    - 内容日历
+    - SEO 关键词策略
+    - 受众画像
+    - 过往内容库
+  optional:
+    - 产品技术细节（可公开部分）
+    - 营销策略
+  forbidden:
+    - 未公开的财务数据
+    - 内部技术架构

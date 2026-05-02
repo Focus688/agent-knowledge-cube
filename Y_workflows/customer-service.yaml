@@ -1,0 +1,74 @@
+# Y: 客户服务工作流
+# 怎么做 — 客户支持全生命周期
+
+name: customer-service
+display: 客户服务
+description: 从客户问题受理到解决的完整服务流程
+
+stages:
+  - id: receive
+    name: 问题受理
+    roles:
+      - customer-support-agent
+    knowledge_slice:
+      - customer-support/faq
+      - customer-support/triage-rules
+      - product/user-guide
+    handoff: >
+      创建工单
+      根据 S0/S1/S2/S3 分级处理
+    verification:
+      - 工单信息完整
+      - 客户身份已验证
+      - 问题分类已标记
+
+  - id: diagnose
+    name: 问题诊断
+    roles:
+      - customer-support-agent
+      - technical-support-engineer
+    knowledge_slice:
+      - customer-support/knowledge-base
+      - customer-support/known-issues
+      - engineering/debugging-guide
+      - product/user-guide
+    handoff: >
+      确认问题根因
+      如为产品缺陷则转研发，否则直接给出方案
+    verification:
+      - 根因已定位
+      - 影响范围已评估
+      - 解决方案已确认
+
+  - id: resolve
+    name: 问题解决
+    roles:
+      - customer-support-agent
+      - technical-support-engineer
+      - software-engineer
+    knowledge_slice:
+      - customer-support/solution-templates
+      - customer-support/workaround-docs
+      - engineering/patch-guide
+    handoff: >
+      客户确认问题已解决
+      进入跟进阶段
+    verification:
+      - 客户已确认解决
+      - 解决方案已记录到知识库
+      - 工单状态已更新
+
+  - id: follow-up
+    name: 售后跟进
+    roles:
+      - customer-support-agent
+    knowledge_slice:
+      - customer-support/follow-up-templates
+      - product/update-logs
+    handoff: >
+      满意度调查发出
+      工单关闭
+    verification:
+      - 满意度已收集
+      - 工单已关闭
+      - 如为产品缺陷，已创建内部工单

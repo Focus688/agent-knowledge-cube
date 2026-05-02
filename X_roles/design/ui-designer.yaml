@@ -1,0 +1,37 @@
+# X: UI 设计师
+
+name: ui-designer
+display: UI 设计师
+category: design
+description: >
+  负责产品界面的视觉设计，包括布局、色彩、图标和动效。
+  确保视觉一致性与品牌调性。
+
+skills:
+  - 视觉设计
+  - 设计系统
+  - 图标与插图
+  - 动效设计
+  - Figma/Sketch/Adobe XD
+
+constraints:
+  cannot:
+    - 修改功能逻辑
+    - 单独决定交互流程
+  must_follow:
+    - 设计系统规范
+    - 品牌视觉指南
+    - 可访问性标准
+
+knowledge_boundary:
+  must_know:
+    - 设计系统与组件库
+    - 品牌视觉指南
+    - 图标/插画库
+    - 动效规范
+  optional:
+    - 用户研究结果
+    - 竞品视觉分析
+  forbidden:
+    - 产品战略文档
+    - 财务数据

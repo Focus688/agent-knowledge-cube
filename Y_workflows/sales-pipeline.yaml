@@ -1,0 +1,98 @@
+# Y: 销售管道工作流
+# 怎么做 — 从线索到签约的销售全流程
+
+name: sales-pipeline
+display: 销售管道
+description: 从线索获取到客户签约的完整销售流程
+
+stages:
+  - id: lead-generation
+    name: 线索获取
+    roles:
+      - sales-representative
+      - marketing-specialist
+    knowledge_slice:
+      - sales/lead-sources
+      - sales/icp-definition
+      - marketing/campaign-data
+    handoff: >
+      线索输入 CRM
+      经资格验证后进入跟进阶段
+    verification:
+      - 线索信息完整
+      - 符合理想客户画像
+      - 来源已标记
+
+  - id: qualify
+    name: 资格验证
+    roles:
+      - sales-representative
+    knowledge_slice:
+      - sales/qualification-criteria
+      - sales/bant-framework
+      - product/pricing
+    handoff: >
+      判断为合格线索
+      进入演示与方案阶段
+    verification:
+      - BANT 评估完成
+      - 预算已确认
+      - 决策链已明确
+
+  - id: present
+    name: 方案演示
+    roles:
+      - sales-representative
+      - software-engineer
+    knowledge_slice:
+      - sales/product-demo-script
+      - sales/competitor-comparison
+      - engineering/architecture-overview
+      - product/case-studies
+    handoff: >
+      演示完毕
+      根据反馈进入报价或跟进
+    verification:
+      - 演示覆盖关键场景
+      - 竞品差异已说明
+      - 客户疑问已记录
+      - 下一步已明确
+
+  - id: close
+    name: 签约成交
+    roles:
+      - sales-representative
+      - legal-counsel
+      - finance-specialist
+    knowledge_slice:
+      - sales/contract-templates
+      - sales/pricing-guide
+      - legal/contract-clauses
+      - finance/invoicing
+    handoff: >
+      合同签署完毕
+      进入客户交接阶段
+    verification:
+      - 合同已签署
+      - 法务已审核
+      - 支付条款已确认
+      - 交接文档已准备
+
+  - id: onboard
+    name: 客户交接
+    roles:
+      - sales-representative
+      - customer-support-agent
+      - software-engineer
+    knowledge_slice:
+      - customer-support/onboarding-guide
+      - product/setup-guide
+      - sales/handover-template
+    handoff: >
+      客户已成功接入
+      转入常规服务流程
+    verification:
+      - 客户对接人已确认
+      - 初始配置已完成
+      - 培训已安排
+      - 交接文档已归档

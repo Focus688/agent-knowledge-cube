@@ -80,32 +80,56 @@ Agent_A literally cannot access Agent_B's knowledge. Not because we told it not 
 ```
 agent-knowledge-cube/
 │
-├── X_roles/                  # 角色目录 — All possible agent personas
-│   ├── product-manager.yaml
-│   ├── software-engineer.yaml
-│   ├── sales.yaml
-│   ├── customer-support.yaml
-│   └── ...
+├── X_roles/                          # 角色目录 (8大类, 16个角色)
+│   ├── engineering/                  # → 5 roles
+│   │   ├── software-engineer.yaml
+│   │   ├── devops-engineer.yaml
+│   │   ├── qa-engineer.yaml
+│   │   ├── data-engineer.yaml
+│   │   └── security-engineer.yaml
+│   ├── product/                      # → 3 roles
+│   │   ├── product-manager.yaml
+│   │   ├── product-designer.yaml
+│   │   └── data-analyst.yaml
+│   ├── design/                       # → 2 roles
+│   │   ├── ui-designer.yaml
+│   │   └── ux-researcher.yaml
+│   ├── marketing/                    # → 2 roles
+│   │   ├── marketing-specialist.yaml
+│   │   └── content-creator.yaml
+│   ├── sales/                        # → 1 role
+│   │   └── sales-representative.yaml
+│   ├── customer-support/             # → 2 roles
+│   │   ├── customer-support-agent.yaml
+│   │   └── technical-support-engineer.yaml
+│   ├── management/                   # → 2 roles
+│   │   ├── engineering-manager.yaml
+│   │   └── project-manager.yaml
+│   └── operations/                   # → 3 roles
+│       ├── hr-specialist.yaml
+│       ├── legal-counsel.yaml
+│       └── finance-specialist.yaml
 │
-├── Y_workflows/              # 工作流目录 — Process orchestrations
-│   ├── software-development.yaml   # 需求→设计→编码→测试→部署
-│   ├── customer-service.yaml       # 受理→诊断→解决→反馈
-│   ├── marketing-campaign.yaml     # 策略→创意→执行→分析
-│   └── ...
+├── Y_workflows/                      # 工作流目录 (5个核心工作流)
+│   ├── software-development.yaml     # 6 stages: 需求→设计→编码→审查→测试→部署
+│   ├── customer-service.yaml         # 4 stages: 受理→诊断→解决→跟进
+│   ├── marketing-campaign.yaml       # 4 stages: 策略→创意→发布→分析
+│   ├── sales-pipeline.yaml           # 5 stages: 线索→资格→演示→签约→交接
+│   └── product-development.yaml      # 5 stages: 发现→定义→构建→发布→迭代
 │
-├── Z_knowledge/              # 知识库切片 — Knowledge domains & slices
-│   ├── tech-stack.md
-│   ├── product-specs/
-│   ├── sop/
-│   └── ...
+├── Z_knowledge/                      # 知识库切片 (按域组织)
+│   ├── engineering/
+│   │   ├── code-standards.md
+│   │   ├── tech-stack.md
+│   │   ├── deployment-guide.md
+│   │   └── test-strategy.md
+│   └── product/
+│       ├── prd-template.md
+│       └── user-research-guide.md
 │
-├── _cube_index.yaml          # 三维索引矩阵 — The master index
-│   # Maps every (x, y) → z slice(s)
-│   # e.g. (engineer, code-review) → [code-standards.md, review-checklist.md]
-│
-├── experiments/              # 实验场 — Run experiments
-│   ├── 001-customer-support-cube/
-│   └── 002-dev-team-cube/
+├── _cube_index.yaml                  # 三维索引矩阵 — The master index
+│                                     # 75+ entries mapping (x, y) → z slices
+│                                     # 覆盖 16 roles × 24 stages = 可寻址知识坐标
 │
 └── README.md
 ```
@@ -179,8 +203,8 @@ cube:
 
 ## Roadmap
 
-- [ ] Phase 1: Concept & specification (we are here)
-- [ ] Phase 2: Taxonomy — build comprehensive X/Y/Z catalogs
+- [x] Phase 1: Concept & specification
+- [x] Phase 2: Taxonomy — initial X/Y/Z catalogs (16 roles, 5 workflows, 6 knowledge slices, 75+ cube index entries)
 - [ ] Phase 3: Reference implementation — Python library for cube-indexed agent constraints
 - [ ] Phase 4: Framework adapters — CrewAI / LangGraph / MetaGPT integration
 - [ ] Phase 5: Visualizer — 3D cube browser for knowledge slices

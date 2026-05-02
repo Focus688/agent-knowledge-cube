@@ -1,0 +1,80 @@
+# Y: 营销活动工作流
+# 怎么做 — 从策略到执行的营销全流程
+
+name: marketing-campaign
+display: 营销活动
+description: 从策略制定到效果分析的营销活动全流程
+
+stages:
+  - id: strategy
+    name: 策略制定
+    roles:
+      - marketing-specialist
+      - data-analyst
+    knowledge_slice:
+      - marketing/campaign-strategy
+      - marketing/audience-insights
+      - product/competitor-analysis
+      - product/brand-guide
+    handoff: >
+      输出营销策略文档
+      经审批后进入创意阶段
+    verification:
+      - 目标与 KPI 已定义
+      - 目标受众已明确
+      - 预算已确认
+      - 渠道策略已确定
+
+  - id: creative
+    name: 创意制作
+    roles:
+      - content-creator
+      - ui-designer
+      - marketing-specialist
+    knowledge_slice:
+      - marketing/content-calendar
+      - marketing/brand-guide
+      - marketing/seo-keywords
+      - design/visual-library
+    handoff: >
+      输出创意素材
+      审核通过后进入发布阶段
+    verification:
+      - 所有素材已审核通过
+      - 渠道适配已确认
+      - 合规审查已通过
+
+  - id: launch
+    name: 活动发布
+    roles:
+      - marketing-specialist
+    knowledge_slice:
+      - marketing/channel-config
+      - marketing/launch-checklist
+      - marketing/ad-platform-guide
+    handoff: >
+      活动已上线
+      进入监测与优化阶段
+    verification:
+      - 所有渠道已发布
+      - 追踪链接已验证
+      - 着陆页已生效
+      - 内部通知已发出
+
+  - id: analyze
+    name: 效果分析
+    roles:
+      - marketing-specialist
+      - data-analyst
+    knowledge_slice:
+      - marketing/analytics-dashboard
+      - marketing/report-templates
+      - product/metrics-definitions
+    handoff: >
+      输出活动分析报告
+      总结进入下一次迭代
+    verification:
+      - 数据已采集完整
+      - KPI 已对比分析
+      - 洞察与建议已输出
+      - 报告已归档

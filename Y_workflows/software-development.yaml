@@ -1,0 +1,113 @@
+# Y: 软件开发工作流
+# 怎么做 — 软件工程全生命周期
+
+name: software-development
+display: 软件开发
+description: 从需求到部署的完整软件开发流水线
+
+stages:
+  - id: requirements-analysis
+    name: 需求分析
+    roles:
+      - product-manager
+      - data-analyst
+    knowledge_slice:
+      - product/product-requirement-docs
+      - product/user-research
+      - product/competitor-analysis
+    handoff: >
+      输出 PRD（产品需求文档）
+      经评审后进入设计阶段
+    verification:
+      - PRD 已评审签字
+      - 需求验收标准已定义
+
+  - id: design
+    name: 设计与架构
+    roles:
+      - product-designer
+      - ui-designer
+      - software-engineer
+    knowledge_slice:
+      - product/product-requirement-docs
+      - design/design-system
+      - engineering/architecture-guide
+      - engineering/tech-stack
+    handoff: >
+      输出设计稿 + 技术方案
+      设计评审通过后进入开发
+    verification:
+      - 设计评审通过
+      - 技术方案评审通过
+      - 设计稿已交付设计系统
+
+  - id: implementation
+    name: 编码实现
+    roles:
+      - software-engineer
+    knowledge_slice:
+      - engineering/code-standards
+      - engineering/tech-stack
+      - engineering/api-docs
+      - product/product-requirement-docs
+    handoff: >
+      输出可运行的代码
+      PR 提交后进入代码审查
+    verification:
+      - 单元测试覆盖 >= 80%
+      - 代码规范检查通过
+      - PR 描述完整
+
+  - id: code-review
+    name: 代码审查
+    roles:
+      - software-engineer
+      - qa-engineer
+      - security-engineer
+    knowledge_slice:
+      - engineering/code-standards
+      - engineering/review-checklist
+      - engineering/security-guidelines
+    handoff: >
+      审查通过合并到主分支
+      进入测试阶段
+    verification:
+      - 至少 1 人批准
+      - 所有评论已解决
+      - 安全扫描通过
+
+  - id: testing
+    name: 测试验证
+    roles:
+      - qa-engineer
+      - software-engineer
+    knowledge_slice:
+      - engineering/test-strategy
+      - engineering/test-cases
+      - product/product-requirement-docs
+    handoff: >
+      测试报告通过后
+      进入部署阶段
+    verification:
+      - 所有测试用例通过
+      - 无 P0/P1 级别缺陷
+      - 性能测试达标
+
+  - id: deployment
+    name: 部署上线
+    roles:
+      - devops-engineer
+      - software-engineer
+      - qa-engineer
+    knowledge_slice:
+      - engineering/deployment-guide
+      - engineering/monitoring
+      - engineering/rollback-plan
+    handoff: >
+      部署完成
+      监控确认后通知相关方
+    verification:
+      - 部署成功确认
+      - 监控指标正常
+      - 回滚方案就绪
+      - 发布公告已发送
