@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "agent-knowledge-cube"
+version = "0.1.0"
+description = "3D Knowledge Constraint Framework: Role (X) × Workflow (Y) × Knowledge (Z)"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dependencies = [
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+cube = "agent_knowledge_cube.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["agent_knowledge_cube*"]
