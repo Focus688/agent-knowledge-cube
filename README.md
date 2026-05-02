@@ -2,23 +2,9 @@
 
 **三维知识约束框架 — 3D Knowledge Constraint Framework**
 
-```
-          Z (Knowledge Base)
-          ↑  用什么做
-          |
-          |            Y (Workflow)
-          |            ←────────── 怎么做
-          |
-          |         ┌────┬────┬────┐
-          |         │    │    │    │
-          |         ├────┼────┼────┤
-          |         │    │ ●  │    │  ← (x, y, z) 交叉点
-          |         ├────┼────┼────┤
-          |         │    │    │    │
-          |         └────┴────┴────┘
-          +─────────────────────────→
-                 X (Role)  谁做
-```
+<div align="center">
+  <img src="assets/cube-concept.svg" width="800" alt="Agent Knowledge Cube Concept" />
+</div>
 
 ## The Concept
 
