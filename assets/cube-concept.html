@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: #fafbfc; padding: 20px; width: 1000px;
+}
+.title { text-align: center; margin-bottom: 20px; }
+.title h1 { font-size: 24px; color: #1f2937; }
+.title p { font-size: 14px; color: #6b7280; margin-top: 4px; }
+
+/* Left: Cube */
+.cube-section { 
+  width: 430px; height: 340px; float: left; position: relative;
+  margin-right: 20px;
+}
+.cube-section svg { width: 430px; height: 340px; }
+.cube-section .labels { position: absolute; }
+.x-label { position: absolute; left: 380px; top: 230px; }
+.x-label .main { font-size: 14px; font-weight: 700; color: #1f2937; }
+.x-label .sub { font-size: 11px; color: #9ca3af; }
+.y-label { position: absolute; left: 8px; top: 25px; }
+.y-label .main { font-size: 14px; font-weight: 700; color: #1f2937; }
+.y-label .sub { font-size: 11px; color: #9ca3af; }
+.z-label { position: absolute; left: 350px; top: 5px; }
+.z-label .main { font-size: 14px; font-weight: 700; color: #1f2937; }
+.z-label .sub { font-size: 11px; color: #9ca3af; }
+
+/* Right cards */
+.right-col { float: left; width: 530px; }
+
+.card { border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.card-bad { background: #fef2f2; border: 1px solid #fca5a5; }
+.card-good { background: #f0fdf4; border: 1px solid #86efac; }
+.card-title { font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+.card-bad .card-title { color: #ef4444; }
+.card-good .card-title { color: #16a34a; }
+.card p { font-size: 12px; color: #1f2937; line-height: 1.6; }
+.card .line { border: none; border-top: 1px solid; margin: 6px 0; }
+.card-bad .line { border-color: #fecaca; }
+.card-good .line { border-color: #bbf7d0; }
+.card .check { font-size: 11px; }
+.card-bad .check { color: #dc2626; }
+.card-good .check { color: #16a34a; }
+
+/* Analogy section */
+.analogy-title { clear: both; padding-top: 12px; font-size: 14px; font-weight: 700; color: #1f2937; margin-bottom: 8px; }
+.analogy-grid { display: flex; gap: 10px; }
+.analogy-card { flex: 1; border-radius: 10px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
+.analogy-card h3 { font-size: 14px; margin-bottom: 8px; }
+.analogy-card p { font-size: 12px; line-height: 1.7; color: #1f2937; }
+.analogy-card p strong { display: block; margin-top: 4px; }
+.analogy-kitchen { background: #fff7ed; border: 1px solid #fdba74; }
+.analogy-kitchen h3 { color: #9a3412; }
+.analogy-kitchen p strong { color: #9a3412; }
+.analogy-factory { background: #eff6ff; border: 1px solid #93c5fd; }
+.analogy-factory h3 { color: #1e3a5f; }
+.analogy-factory p strong { color: #1e3a5f; }
+.analogy-library { background: #f5f3ff; border: 1px solid #c4b5fd; }
+.analogy-library h3 { color: #4c1d95; }
+.analogy-library p strong { color: #4c1d95; }
+.analogy-quote { background: #e0f2fe; border: 1px solid #7dd3fc; }
+.analogy-quote h3 { color: #1e3a5f; text-align: center; }
+.analogy-quote p { text-align: center; }
+.analogy-quote p strong { color: #2563eb; font-size: 15px; }
+</style>
+</head>
+<body>
+
+<div class="title">
+  <h1>🧊 Agent Knowledge Cube</h1>
+  <p>三维知识约束框架 — 用结构代替 prompt，从源头约束 AI Agent</p>
+</div>
+
+<!-- Left: 3D Cube -->
+<div class="cube-section">
+  <svg viewBox="0 0 430 340">
+    <defs>
+      <linearGradient id="cTop" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.3" />
+        <stop offset="100%" style="stop-color:#2563EB;stop-opacity:0.15" />
+      </linearGradient>
+      <linearGradient id="cLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:0.2" />
+        <stop offset="100%" style="stop-color:#1D4ED8;stop-opacity:0.1" />
+      </linearGradient>
+      <linearGradient id="cRight" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:0.15" />
+        <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:0.08" />
+      </linearGradient>
+      <linearGradient id="slice" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0.5" />
+        <stop offset="100%" style="stop-color:#D97706;stop-opacity:0.3" />
+      </linearGradient>
+    </defs>
+    <!-- Cube Top -->
+    <polygon points="160,40 290,80 160,120 30,80" fill="url(#cTop)" stroke="#3B82F6" stroke-width="2"/>
+    <!-- Cube Left -->
+    <polygon points="30,80 160,120 160,240 30,200" fill="url(#cLeft)" stroke="#3B82F6" stroke-width="2"/>
+    <!-- Cube Right -->
+    <polygon points="160,120 290,80 290,200 160,240" fill="url(#cRight)" stroke="#3B82F6" stroke-width="2"/>
+    <!-- Slice -->
+    <polygon points="120,90 190,115 190,155 120,130" fill="url(#slice)" stroke="#F59E0B" stroke-width="2" stroke-dasharray="4,3"/>
+    <!-- Point -->
+    <circle cx="155" cy="120" r="5" fill="#F59E0B" stroke="#fff" stroke-width="2"/>
+    <text x="160" y="115" font-size="11" font-weight="700" fill="#92400E">(x, y, z)</text>
+  </svg>
+  <div class="x-label">
+    <div class="main">X — 角色（谁做）</div>
+    <div class="sub">Engineer / Sales / Support / PM ...</div>
+  </div>
+  <div class="y-label">
+    <div class="main">Y — 工作流（怎么做）</div>
+    <div class="sub">营销 → 研发 → 生产 → 交付</div>
+  </div>
+  <div class="z-label">
+    <div class="main">Z — 知识库（用什么做）</div>
+    <div class="sub">代码规范 / 销售话术 / FAQ ...</div>
+  </div>
+</div>
+
+<!-- Right: Cards -->
+<div class="right-col">
+  <div class="card card-bad">
+    <div class="card-title">✗ 传统方式 — Prompt 软约束</div>
+    <p>"你是一个客服，不要管定价的事"</p>
+    <p>"你是一个工程师，不要碰销售数据"</p>
+    <hr class="line">
+    <p class="check">❌ Agent 还是会看到全部知识，全靠自律</p>
+    <p class="check">❌ 容易越界、互相矛盾、烧 token</p>
+  </div>
+  <div class="card card-good">
+    <div class="card-title">✓ Cube 方式 — 结构硬约束</div>
+    <p>客服 Agent → 只看 FAQ + 工单模板</p>
+    <p>工程师 Agent → 只看代码规范 + 架构文档</p>
+    <hr class="line">
+    <p class="check">✅ Agent 根本看不到不属于自己的知识</p>
+    <p class="check">✅ 零冲突、精准投喂、省 60-80% token</p>
+  </div>
+</div>
+
+<!-- Analogies -->
+<div style="clear:both"></div>
+<div class="analogy-title">举个栗子 🌰</div>
+<div class="analogy-grid">
+  <div class="analogy-card analogy-kitchen">
+    <h3>🍳 后厨</h3>
+    <p>掌勺的只知道盐在哪<br>看不到收银台有多少钱<br>不是自觉——<strong>是工作台就没这玩意儿</strong></p>
+  </div>
+  <div class="analogy-card analogy-factory">
+    <h3>🏭 流水线</h3>
+    <p>装轮胎的不会去拿发动机<br>没到他那一站<br>不是品德高尚——<strong>是传送带没传过去</strong></p>
+  </div>
+  <div class="analogy-card analogy-library">
+    <h3>📚 图书馆</h3>
+    <p>学生的卡刷不进教授阅览室<br>不是贴条说"请勿入内"<br>不是自觉——<strong>是刷卡机直接拒绝</strong></p>
+  </div>
+  <div class="analogy-card analogy-quote">
+    <h3>一句话</h3>
+    <p>以前管 AI 靠<br>"跟它说别乱看"<br><strong>你的框架靠<br>"它根本看不到"</strong></p>
+  </div>
+</div>
+
+</body>
+</html>

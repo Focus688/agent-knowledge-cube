@@ -78,6 +78,20 @@ def main():
     viz_parser.add_argument("role", type=str)
     viz_parser.add_argument("--workflow", type=str)
 
+    # optimize
+    opt_parser = subparsers.add_parser("optimize", help="Weighted optimization: Score = W1×X + W2×Y + W3×Z")
+    opt_parser.add_argument("goal", type=str, help="Natural language goal description")
+    opt_parser.add_argument("--top-k", type=int, default=3, help="Number of results (default: 3)")
+    opt_parser.add_argument("--mode", choices=["heuristic", "llm"], default="heuristic",
+                            help="Optimization mode: heuristic (keyword-based) or llm (calls LLM)")
+    opt_parser.add_argument("--roles", type=str, help="Comma-separated role filter")
+    opt_parser.add_argument("--workflows", type=str, help="Comma-separated workflow filter")
+    opt_parser.add_argument("--weights", action="store_true", help="Show only the optimal weights")
+
+    # compare
+    cmp_parser = subparsers.add_parser("compare", help="Compare heuristic vs LLM optimization")
+    cmp_parser.add_argument("goal", type=str, help="Natural language goal description")
+
     args = parser.parse_args()
 
     try:
@@ -99,6 +113,10 @@ def main():
         _handle_stats(cube)
     elif args.command == "viz":
         _handle_viz(cube, args)
+    elif args.command == "optimize":
+        _handle_optimize(cube, args)
+    elif args.command == "compare":
+        _handle_compare(cube, args)
 
 
 def _handle_list(cube: Cube, args):
@@ -234,7 +252,64 @@ def _handle_viz(cube: Cube, args):
             if z_count > 3:
                 z_files += f" ... (+{z_count - 3})"
             print(f"    ├─ {stage_id:<30} 📄 {z_count} files")
-        print(f"    └─ Total: {len(wf_entries)} stages")
+            print(f"    └─ Total: {len(wf_entries)} stages")
+
+
+def _handle_optimize(cube: Cube, args):
+    """Weighted optimization: find best (x, y, z) for a goal."""
+    from .optimizer import WeightedOptimizer
+
+    optimizer = WeightedOptimizer(cube)
+
+    roles = args.roles.split(",") if args.roles else None
+    workflows = args.workflows.split(",") if args.workflows else None
+
+    # Just show weights
+    if args.weights:
+        weights = optimizer.optimize_weights(args.goal, mode=args.mode, available_roles=roles, available_workflows=workflows)
+        print(f"\n🎯 Goal: {args.goal}")
+        print(f"📊 Optimal weights ({args.mode} mode):")
+        print(f"   W1 (Role):     {weights['W1']:.2f}")
+        print(f"   W2 (Workflow): {weights['W2']:.2f}")
+        print(f"   W3 (Knowledge):{weights['W3']:.2f}")
+        return
+
+    # Full optimization
+    results = optimizer.optimize(args.goal, top_k=args.top_k, mode=args.mode,
+                                 available_roles=roles, available_workflows=workflows)
+
+    print(f"\n🎯 Goal: {args.goal}")
+    print(f"📊 Mode: {args.mode} | Top-{args.top_k} results")
+    print("=" * 70)
+
+    for i, r in enumerate(results, 1):
+        print(f"\n  #{i}  Score: {r.score:.4f}  |  {r.role} @ {r.stage_name}")
+        print(f"      {'─' * 55}")
+        for dim, score in r.scores.items():
+            print(f"      {dim:<45} {score:.4f}")
+        print(f"      Knowledge: {', '.join(r.knowledge_paths[:3])}")
+        if len(r.knowledge_paths) > 3:
+            print(f"                 ... +{len(r.knowledge_paths) - 3} more")
+
+
+def _handle_compare(cube: Cube, args):
+    """Compare heuristic vs LLM optimization."""
+    from .optimizer import WeightedOptimizer
+
+    optimizer = WeightedOptimizer(cube)
+
+    print(f"\n🎯 Goal: {args.goal}")
+    print("=" * 70)
+
+    for mode in ["heuristic", "llm"]:
+        print(f"\n📊 Mode: {mode}")
+        print(f"{'─' * 50}")
+        results = optimizer.optimize(args.goal, top_k=3, mode=mode)
+        for i, r in enumerate(results, 1):
+            print(f"  #{i}  {r.score:.4f}  |  {r.role} @ {r.stage_name}")
+            for dim, score in r.scores.items():
+                print(f"      {dim:<50} {score:.4f}")
+        print()
 
 
 if __name__ == "__main__":
