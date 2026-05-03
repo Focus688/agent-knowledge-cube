@@ -6,6 +6,17 @@
   <img src="assets/cube-concept.svg" width="800" alt="Agent Knowledge Cube Concept" />
 </div>
 
+<div align="center">
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](pyproject.toml)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Focus688/agent-knowledge-cube)](https://github.com/Focus688/agent-knowledge-cube/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/Focus688/agent-knowledge-cube)](https://github.com/Focus688/agent-knowledge-cube/issues)
+[![GitHub Discussions](https://img.shields.io/github/discussions/Focus688/agent-knowledge-cube)](https://github.com/Focus688/agent-knowledge-cube/discussions)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+</div>
+
 ## The Concept
 
 A structured framework that constrains AI Agents along three orthogonal dimensions:
