@@ -131,9 +131,36 @@ agent-knowledge-cube/
 └── README.md
 ```
 
+## Quickstart
+
+```bash
+# 1. Install (only dependency: pyyaml)
+git clone https://github.com/Focus688/agent-knowledge-cube.git
+cd agent-knowledge-cube
+pip install -e .
+
+# 2. See what's inside
+cube stats              # 16 roles · 5 workflows · 54 index entries
+cube list roles         # all roles
+cube list workflows     # 5 real workflows
+
+# 3. Query a knowledge slice for an agent
+cube agent software-engineer software-development
+# → prints exactly the knowledge that role needs at each stage
+
+# 4. Optimize for a goal
+cube optimize "build a scalable backend API" --top-k 3
+```
+
+**What just happened?** The repo ships with a working cube: 16 roles across 5 real workflows (`software-development`, `product-development`, `sales-pipeline`, `customer-service`, `marketing-campaign`) and 75 knowledge files. `cube agent <role> <workflow>` prints precisely the knowledge slices that role needs at each stage — nothing more, nothing less. That single command is the whole point: it eliminates role collision and the knowledge firehose by construction.
+
+> Want a one-stage slice instead? `cube knowledge <role> <workflow>:<stage>` — e.g. `cube knowledge software-engineer software-development:code-review`.
+
+---
+
 ## Getting Started
 
-This is a **concept-first** repository. We're defining the specification before the implementation.
+This repository ships with both the **specification** (YAML schema) and a **working implementation** (Python CLI). To define your own cube, start here:
 
 ### 1. Define Your Roles (X)
 
